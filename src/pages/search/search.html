@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Search Bus</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label>From</ion-label>
+      <ion-select [(ngModel)]="from">
+        <ion-option value="nes">NES</ion-option>
+        <ion-option value="n64">Nintendo64</ion-option>
+        <ion-option value="ps">PlayStation</ion-option>
+        <ion-option value="genesis">Sega Genesis</ion-option>
+        <ion-option value="saturn">Sega Saturn</ion-option>
+        <ion-option value="snes">SNES</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>To</ion-label>
+      <ion-select [(ngModel)]="to">
+        <ion-option value="nes">NES</ion-option>
+        <ion-option value="n64">Nintendo64</ion-option>
+        <ion-option value="ps">PlayStation</ion-option>
+        <ion-option value="genesis">Sega Genesis</ion-option>
+        <ion-option value="saturn">Sega Saturn</ion-option>
+        <ion-option value="snes">SNES</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Time interval: {{ timeRange.lower }}:00 - {{ timeRange.upper }}:00</ion-label>
+      <ion-range dualKnobs="true" [(ngModel)]="timeRange" min="0" max="24" step="1" snaps="true">
+        <ion-label range-left>00:00</ion-label>
+        <ion-label range-right>24:00</ion-label>
+      </ion-range>
+    </ion-item>
+    <ion-item>
+      <button ion-button icon-only full (click)="search()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item *ngFor="let item of busTiming">
+      {{ item }}
+    </ion-item>
+  </ion-list>
+</ion-content>
