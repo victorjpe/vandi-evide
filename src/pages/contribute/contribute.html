@@ -1,0 +1,56 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+		<ion-title>Contribute</ion-title>
+	</ion-navbar>
+</ion-header>
+<ion-content padding cache-view="false">
+	<ion-list>
+		<ion-item>
+			<ion-label>Hop On station</ion-label>
+			<ion-select [(ngModel)]="from">
+				<ion-option value="nes">NES</ion-option>
+				<ion-option value="n64">Nintendo64</ion-option>
+				<ion-option value="ps">PlayStation</ion-option>
+				<ion-option value="genesis">Sega Genesis</ion-option>
+				<ion-option value="saturn">Sega Saturn</ion-option>
+				<ion-option value="snes">SNES</ion-option>
+			</ion-select>
+		</ion-item>
+		<ion-item>
+			<ion-label>Hop Off station</ion-label>
+			<ion-select [(ngModel)]="to">
+				<ion-option value="nes">NES</ion-option>
+				<ion-option value="n64">Nintendo64</ion-option>
+				<ion-option value="ps">PlayStation</ion-option>
+				<ion-option value="genesis">Sega Genesis</ion-option>
+				<ion-option value="saturn">Sega Saturn</ion-option>
+				<ion-option value="snes">SNES</ion-option>
+			</ion-select>
+		</ion-item>
+		<ion-item>
+			<ion-label>Date</ion-label>
+			<ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="travelDate"></ion-datetime>
+		</ion-item>
+		<ion-item>
+			<ion-label>Bus Timing</ion-label>
+			<ion-datetime displayFormat="HH:mm" [(ngModel)]="arrivalTime"></ion-datetime>
+		</ion-item>
+		<ion-item>
+			<ion-label>Travel Time</ion-label>
+			<ion-datetime displayFormat="HH:mm" [(ngModel)]="travelTime"></ion-datetime>
+		</ion-item>
+	</ion-list>
+	<ion-list>
+		<ion-item>
+			Rate your travel
+		</ion-item>
+		<ion-item>
+			<ion-row>				
+				<ion-icon name="star-outline" *ngFor="let item of stars" *ngIf="index;else templateName"></ion-icon>
+			</ion-row>
+		</ion-item>
+	</ion-list>
+</ion-content>
