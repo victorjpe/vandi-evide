@@ -9,7 +9,7 @@
 <ion-content padding cache-view="false">
 	<ion-list>
 		<ion-item>
-			<ion-label>Hop On station</ion-label>
+			<ion-label floating>Hop On station</ion-label>
 			<ion-select [(ngModel)]="from">
 				<ion-option value="nes">NES</ion-option>
 				<ion-option value="n64">Nintendo64</ion-option>
@@ -20,7 +20,7 @@
 			</ion-select>
 		</ion-item>
 		<ion-item>
-			<ion-label>Hop Off station</ion-label>
+			<ion-label floating>Hop Off station</ion-label>
 			<ion-select [(ngModel)]="to">
 				<ion-option value="nes">NES</ion-option>
 				<ion-option value="n64">Nintendo64</ion-option>
@@ -31,15 +31,19 @@
 			</ion-select>
 		</ion-item>
 		<ion-item>
-			<ion-label>Date</ion-label>
+			<ion-label floating>Bus Name</ion-label>
+			<ion-input type="text" [(ngModel)]="busName"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label floating>Date</ion-label>
 			<ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="travelDate"></ion-datetime>
 		</ion-item>
 		<ion-item>
-			<ion-label>Bus Timing</ion-label>
+			<ion-label floating>Bus Timing</ion-label>
 			<ion-datetime displayFormat="HH:mm" [(ngModel)]="arrivalTime"></ion-datetime>
 		</ion-item>
 		<ion-item>
-			<ion-label>Travel Time</ion-label>
+			<ion-label floating>Travel Time</ion-label>
 			<ion-datetime displayFormat="HH:mm" [(ngModel)]="travelTime"></ion-datetime>
 		</ion-item>
 	</ion-list>
@@ -48,9 +52,21 @@
 			Rate your travel
 		</ion-item>
 		<ion-item>
-			<ion-row>				
-				<ion-icon name="star-outline" *ngFor="let item of stars" *ngIf="index;else templateName"></ion-icon>
+			<ion-row>
+				<div *ngFor="let item of stars; index as i">
+					<ion-icon name="star" *ngIf="i < rating" (click)="updateRating(i)"></ion-icon>
+					<ion-icon name="star-outline" *ngIf="i >= rating" (click)="updateRating(i)"></ion-icon>
+				</div>
 			</ion-row>
 		</ion-item>
 	</ion-list>
+	<ion-list>
+		<ion-item>
+			<ion-label floating>Description</ion-label>
+			<ion-textarea [(ngModel)]="description"></ion-textarea>
+		</ion-item>
+	</ion-list>
+	<button ion-button icon-only full>
+  	<ion-icon name="done-all"></ion-icon>
+	</button>
 </ion-content>
