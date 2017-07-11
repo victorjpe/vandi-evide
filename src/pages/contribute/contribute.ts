@@ -5,5 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: 'contribute.html'
 })
 export class ContributePage {
-	
+	rating : number = 0;
+	stars : any[] = [0, 1, 2, 3, 4];
 }
